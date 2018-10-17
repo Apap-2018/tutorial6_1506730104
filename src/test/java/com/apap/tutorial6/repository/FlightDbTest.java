@@ -36,19 +36,19 @@ public class FlightDbTest {
 	@Test
 	
 	public void whenFindByFlightNumber_thenReturnFlight() {
-		PilotModel pilotModel = new PilotModel();
-		pilotModel.setLicenseNumber("4172");
-		pilotModel.setName("Coki");
-		pilotModel.setFlyHour(59);
-		entityManager.persist(pilotModel);
-		entityManager.flush();
+//		PilotModel pilotModel = new PilotModel();
+//		pilotModel.setLicenseNumber("4172");
+//		pilotModel.setName("Coki");
+//		pilotModel.setFlyHour(59);
+//		entityManager.persist(pilotModel);
+//		entityManager.flush();
 		
 		FlightModel flightModel = new FlightModel();
 		flightModel.setFlightNumber("X550");
 		flightModel.setOrigin("Depok");
 		flightModel.setDestination("Bekasi");
 		flightModel.setTime(new Date(new java.util.Date().getTime()));
-		flightModel.setPilot(pilotModel);
+//		flightModel.setPilot(pilotModel);
 		entityManager.persist(flightModel);
 		entityManager.flush();
 		
