@@ -1,21 +1,33 @@
 1. Mengapa perlu menginisiasi object PilotModel, sedangkan yang di test hanya FlightModel?
-Karena suatu flight berasosiasi dengan suatu pilot.
+Karena suatu FlightModel berasosiasi dengan suatu PilotModel.
 
 2. Jelaskan apa yang akan terjadi jika object PilotModel dihapus dan tidak dilakukan setPilot pada
 FlightModel?
-Maka akan 
+Terjadi error bahwa atribut pilot tidak bisa null
 
 3. Jelaskan apa yang dilakukan oleh code
 Mockito.when(flightDb.findByFlightNumber(flight.get().getFlightNumber())).thenReturn(flight);
+untuk test dummy dari flightmodel, yang di test ke database dummy.
+
 4. Jelaskan apa yang dilakukan oleh code
 Mockito.when(flightService.getFlightDetailByFlightNumber(flight.get().getFlightNumber())).thenReturn(flight);
+untuk test dummy dari flightmodel, yang di test ke database dummy.
+
 5. Jelaskan apa yang ditest oleh code
 .andExpect(MockMvcResultMatchers.status().isOk())
+path yang dibuat bisa terakses
+
 6. Jelaskan apa yang ditest oleh code
 .andExpect(MockMvcResultMatchers.jsonPath("$.flightNumber", Matchers.is(flight.get().getFlightNumber())));
+flightNumber yang dipassing ke controller exist
+
 7. Jelaskan anotasi @ResponseBody yang ada pada route “/flight/view
 @RequestMapping(value = "/flight/view", method = RequestMethod.GET)
 private @ResponseBody FlightModel view(@RequestParam(value = "flightNumber") String flightNumber, Model model) {
     FlightModel archive = flightService.getFlightDetailByFlightNumber(flightNumber).get();
     return archive;
 }
+menandakan method yang ingin di test
+
+8. Load Testing status merah
+server gagal merespon akses yang dilakukan oleh user/tester
