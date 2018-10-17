@@ -1,0 +1,17 @@
+1. Mengapa perlu menginisiasi object PilotModel, sedangkan yang di test hanya FlightModel?
+2. Jelaskan apa yang akan terjadi jika object PilotModel dihapus dan tidak dilakukan setPilot pada
+FlightModel?
+3. Jelaskan apa yang dilakukan oleh code
+Mockito.when(flightDb.findByFlightNumber(flight.get().getFlightNumber())).thenReturn(flight);
+4. Jelaskan apa yang dilakukan oleh code
+Mockito.when(flightService.getFlightDetailByFlightNumber(flight.get().getFlightNumber())).thenReturn(flight);
+5. Jelaskan apa yang ditest oleh code
+.andExpect(MockMvcResultMatchers.status().isOk())
+6. Jelaskan apa yang ditest oleh code
+.andExpect(MockMvcResultMatchers.jsonPath("$.flightNumber", Matchers.is(flight.get().getFlightNumber())));
+7. Jelaskan anotasi @ResponseBody yang ada pada route “/flight/view
+@RequestMapping(value = "/flight/view", method = RequestMethod.GET)
+private @ResponseBody FlightModel view(@RequestParam(value = "flightNumber") String flightNumber, Model model) {
+    FlightModel archive = flightService.getFlightDetailByFlightNumber(flightNumber).get();
+    return archive;
+}
